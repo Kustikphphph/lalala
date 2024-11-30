@@ -33,12 +33,21 @@ from .serializers import ArticleSerializer
 #         article = get_object_or_404(Article.objects.all(), pk=pk)
 #         article.delete()
 #         return Response({"message": "Article with id `{}` has been deleted.".format(pk) }, status=204)
-class ArticleView(ListCreateAPIView):
-    queryset = Article.objects.all()
+
+
+# class ArticleView(ListCreateAPIView):
+#     queryset = Article.objects.all()
+#     serializer_class = ArticleSerializer
+#     def perform_create(self, serializer):
+#         author = get_object_or_404(Author, id=self.request.data.get('author'))
+#         return serializer.save(author=author)
+# class SingleArticleView(RetrieveUpdateDestroyAPIView):
+#     queryset = Article.objects.all()
+#     serializer_class = ArticleSerializer
+
+from rest_framework import viewsets
+from .models import Article
+from .serializers import ArticleSerializer
+class ArticleViewSet(viewsets.ModelViewSet):
     serializer_class = ArticleSerializer
-    def perform_create(self, serializer):
-        author = get_object_or_404(Author, id=self.request.data.get('author'))
-        return serializer.save(author=author)
-class SingleArticleView(RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()
-    serializer_class = ArticleSerializer
