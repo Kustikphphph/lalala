@@ -14,6 +14,8 @@ python3 -m venv venv
 python -m venv venv
 
 python -m venv .venv
+
+py -3 -m venv .venv
 ```
 
 Activating venv python [mac].
@@ -26,7 +28,7 @@ Activating venv python [windows -> powershell].
 ```sh
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
-venv\Scripts\Activate.ps1
+.venv\Scripts\Activate.ps1
 ```
 
 Deactivation venv python.
